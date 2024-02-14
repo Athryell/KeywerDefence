@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cna6g5itk0psj"]
+
+[ext_resource type="Script" path="res://Scenes/UI/letter_button.gd" id="1_8do53"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myvej"]
+
+[node name="LetterButton" type="Button"]
+theme_override_styles/focus = SubResource("StyleBoxEmpty_myvej")
+action_mode = 0
+text = "A"
+flat = true
+script = ExtResource("1_8do53")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

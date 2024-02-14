@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d13tjw0ck6ewe"]
+
+[ext_resource type="Script" path="res://Scenes/key.gd" id="1_avlpg"]
+[ext_resource type="Texture2D" uid="uid://c46lojw1x3ju5" path="res://Sprites/Spritesheets Letters/A.png" id="2_bhn23"]
+[ext_resource type="Script" path="res://Scenes/Weapon.gd" id="2_oe4gj"]
+
+[node name="Key" type="Node2D"]
+script = ExtResource("1_avlpg")
+
+[node name="Weapon" type="Node2D" parent="."]
+script = ExtResource("2_oe4gj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapon"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_bhn23")
+hframes = 3

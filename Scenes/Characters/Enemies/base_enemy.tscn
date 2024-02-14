@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjn4h352f2vsp"]
+
+[ext_resource type="Texture2D" uid="uid://d1p2lfbp8w6al" path="res://Sprites/PIXELMEADOW_Emojis_44x48/meadow__0068_emoji69.png" id="1_5skky"]
+[ext_resource type="Script" path="res://Scenes/Characters/Enemies/base_enemy.gd" id="1_hbcjx"]
+
+[node name="BaseEnemy" type="Node2D" groups=["Enemies"]]
+script = ExtResource("1_hbcjx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5skky")

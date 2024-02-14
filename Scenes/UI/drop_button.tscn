@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv8d8blr5b6v7"]
+
+[ext_resource type="StyleBox" uid="uid://btgw42s880vyo" path="res://Materials/MergeBtn_normal.tres" id="1_0twhl"]
+[ext_resource type="StyleBox" uid="uid://dda5mu4r5w7hc" path="res://Materials/MergeBtn_hover.tres" id="2_3wje5"]
+[ext_resource type="Script" path="res://Scenes/UI/drop_button.gd" id="3_36bs1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dw6sw"]
+
+[node name="LeftButton" type="Button"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -123.0
+offset_top = -471.0
+offset_right = 77.0
+offset_bottom = -271.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 130
+theme_override_styles/normal = ExtResource("1_0twhl")
+theme_override_styles/hover = ExtResource("2_3wje5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dw6sw")
+script = ExtResource("3_36bs1")
+metadata/_edit_group_ = true
+
+[node name="BtnLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 100)
+theme_override_font_sizes/font_size = 130
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
