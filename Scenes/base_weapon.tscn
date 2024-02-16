@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnf5ecmvmj7x0"]
+
+[ext_resource type="Texture2D" uid="uid://c46lojw1x3ju5" path="res://Sprites/Spritesheets Letters/A.png" id="2_tcxpf"]
+
+[node name="BaseWeapon" type="Node2D"]
+
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("2_tcxpf")
+hframes = 3
