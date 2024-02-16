@@ -9,7 +9,7 @@ func _ready():
 func _process(delta):
 	position += Vector2.DOWN * 100 * delta
 
-func damage(amount: float):
+func take_damage(amount: float):
 	health -= amount
 	
 	if health <= 0:
