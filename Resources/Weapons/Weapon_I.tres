@@ -10,3 +10,4 @@ bulletSpeed = 0.0
 damage = 0
 speed = 0.0
 recharge_time = 0.0
+area_range = 1000.0
