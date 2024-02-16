@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxxtg3blw2qtu"]
+
+[ext_resource type="PackedScene" uid="uid://cnf5ecmvmj7x0" path="res://Scenes/base_weapon.tscn" id="1_1pt5u"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Weapon_I.gd" id="1_hoxmg"]
+[ext_resource type="PackedScene" uid="uid://dsaqokso3bb2p" path="res://Scenes/Bullets/bullet_i.tscn" id="3_w2t3v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o48xd"]
+radius = 468.94
+
+[node name="Weapon_I" instance=ExtResource("1_1pt5u")]
+script = ExtResource("1_hoxmg")
+weapon_letter = "I"
+description = "Fast laser"
+bulletScene = ExtResource("3_w2t3v")
+
+[node name="WeaponSprite" parent="." index="0"]
+visible = true
+
+[node name="WeaponArea2D" type="Area2D" parent="." index="1"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponArea2D" index="0"]
+shape = SubResource("CircleShape2D_o48xd")
+one_way_collision_margin = 0.0
