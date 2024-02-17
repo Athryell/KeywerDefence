@@ -15,14 +15,13 @@ func set_button_bind(input_key):
 	$Key_sprite.texture = load(SPRITE_BASE_PATH_NOT_ACTIVE + input_key + SPRITE_FORMAT_PATH)
 
 
-
 func set_weapon(letter):
-	if letter == "I": #TODO: Just to remove warnings until I create more weapons
-		var new_weapon = load("res://Scenes/Weapons/Weapon_" + letter + ".tscn")
-		if new_weapon:
-			weapon = new_weapon.instantiate()
-			$Key_sprite.texture = weapon.get_texture()
-			add_child(weapon)
+	var new_weapon = load("res://Scenes/Weapons/weapon_" + letter + ".tscn")
+	if new_weapon:
+		weapon = new_weapon.instantiate()
+		weapon.weapon_letter = letter
+		$Key_sprite.texture = weapon.get_texture()
+		add_child(weapon)
 
 
 func remove_weapon():

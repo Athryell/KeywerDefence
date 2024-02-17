@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7m30ggpnamjq"]
+[gd_scene load_steps=3 format=3 uid="uid://c7m30ggpnamjq"]
 
-[ext_resource type="Script" path="res://Scripts/Base_weapon.gd" id="1_ubnj5"]
 [ext_resource type="Texture2D" uid="uid://c46lojw1x3ju5" path="res://Sprites/Spritesheets Letters/A.png" id="2_tcxpf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3deo"]
 size = Vector2(50, 42)
 
 [node name="BaseWeapon" type="Node2D"]
-script = ExtResource("1_ubnj5")
+
+[node name="RechargeTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="DebugSprite" type="Sprite2D" parent="."]
 visible = false

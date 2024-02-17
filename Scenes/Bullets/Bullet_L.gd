@@ -12,4 +12,3 @@ func _on_area_entered(area):
 	queue_free()
 	if area.has_method("take_damage"):
 		area.take_damage(DMG)
-

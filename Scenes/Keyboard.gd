@@ -28,5 +28,7 @@ func init_keyboard():
 				new_key.set_weapon(letter)
 			
 			add_child(new_key)
+	
+	
 
 

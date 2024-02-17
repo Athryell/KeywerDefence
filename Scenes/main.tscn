@@ -21,7 +21,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="Keyboard" type="Node2D" parent="."]
-position = Vector2(357, 466)
+position = Vector2(309, 466)
 script = ExtResource("2_jf744")
 
 [node name="bullets_container" type="Node2D" parent="."]

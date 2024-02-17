@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://ulq4nelqtnor"]
+
+[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/base_weapon.tscn" id="1_gt1pr"]
+[ext_resource type="Script" path="res://Scenes/Weapons/weapon_T.gd" id="2_333ua"]
+[ext_resource type="Texture2D" uid="uid://v1gmyugn2if4" path="res://Sprites/icon.svg" id="3_d2jug"]
+[ext_resource type="PackedScene" uid="uid://druro8ksxri2w" path="res://Scenes/Bullets/bullet_T.tscn" id="3_i6a4a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1rjx"]
+size = Vector2(692, 424)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nol6m"]
+radius = 30.0
+
+[node name="Weapon_T" instance=ExtResource("1_gt1pr")]
+script = ExtResource("2_333ua")
+bulletScene = ExtResource("3_i6a4a")
+RECHARGE_TIME = 3.0
+description = "Hammer, Slow but aoe"
+
+[node name="DetectionArea" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
+position = Vector2(0, -224)
+shape = SubResource("RectangleShape2D_o1rjx")
+one_way_collision_margin = 0.0
+
+[node name="TargetArea_T" type="Area2D" parent="." index="4"]
+visible = false
+collision_layer = 16
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="TargetArea_T" index="0"]
+scale = Vector2(0.078125, 0.453125)
+texture = ExtResource("3_d2jug")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TargetArea_T" index="1"]
+rotation = -1.56551
+scale = Vector2(0.078125, 0.453125)
+texture = ExtResource("3_d2jug")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea_T" index="2"]
+shape = SubResource("CircleShape2D_nol6m")
+one_way_collision_margin = 0.0

@@ -1,18 +1,20 @@
 extends BaseWeapon
+class_name WeaponDetectionArea
 
 @onready var area = $DetectionArea
-@onready var bulletsContainer = get_tree().get_root().get_node("/root/Main/bullets_container")
 
 
-func shoot():
+func _release_bullet():
 	var enemies_in_range = area.get_overlapping_areas()
 	if enemies_in_range.size() == 0:
 		return
+	elif enemies_in_range.size() == 1:
+		_target = enemies_in_range[0]
+	else:
+		_target = findClosestEnemy(enemies_in_range)
 		
-	print("Enemy!")
-	var target_enemy = enemies_in_range[0]
 	var new_bullet = bulletScene.instantiate()
 	new_bullet.position = global_position
-	new_bullet.look_at(target_enemy.global_position)
+	new_bullet.look_at(_target.global_position)
 	
 	bulletsContainer.add_child(new_bullet)

@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsaqokso3bb2p"]
 
-[ext_resource type="Script" path="res://Scenes/Bullets/Bullet_I.gd" id="1_8irw5"]
-[ext_resource type="Texture2D" uid="uid://c1a7meowtasbe" path="res://Sprites/WhitePixel.png" id="2_ivgtp"]
+[ext_resource type="Script" path="res://Scenes/Bullets/Bullet_I.gd" id="1_6gtd8"]
+[ext_resource type="Texture2D" uid="uid://c1a7meowtasbe" path="res://Sprites/WhitePixel.png" id="2_q42tc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjpum"]
 radius = 2.00047
-height = 30.0
+height = 25.4297
 
 [node name="Bullet_I" type="Area2D"]
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("1_8irw5")
-SPEED = 2000
+script = ExtResource("1_6gtd8")
+SPEED = 2500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.57033
@@ -21,6 +21,6 @@ shape = SubResource("CapsuleShape2D_xjpum")
 modulate = Color(10.526, 14.286, 13.534, 1)
 rotation = 1.57033
 scale = Vector2(4.00463, 29.9916)
-texture = ExtResource("2_ivgtp")
+texture = ExtResource("2_q42tc")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
