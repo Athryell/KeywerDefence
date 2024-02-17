@@ -32,6 +32,8 @@ open_merger={
 [layer_names]
 
 2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Weapons"
+2d_physics/layer_4="Bullets"
 
 [rendering]
 

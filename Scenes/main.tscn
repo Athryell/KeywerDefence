@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcmx37w8yqufw"]
+[gd_scene load_steps=4 format=3 uid="uid://dcmx37w8yqufw"]
 
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="1_x5qir"]
 [ext_resource type="Script" path="res://Scenes/Keyboard.gd" id="2_jf744"]
+
+[sub_resource type="Environment" id="Environment_jae8t"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.46
+glow_strength = 1.15
+glow_blend_mode = 0
+glow_hdr_scale = 0.64
 
 [node name="Main" type="Node"]
 
@@ -15,5 +23,10 @@ autostart = true
 [node name="Keyboard" type="Node2D" parent="."]
 position = Vector2(357, 466)
 script = ExtResource("2_jf744")
+
+[node name="bullets_container" type="Node2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jae8t")
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]

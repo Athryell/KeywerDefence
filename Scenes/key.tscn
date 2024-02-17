@@ -7,3 +7,4 @@ script = ExtResource("1_avlpg")
 
 [node name="Key_sprite" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
+hframes = 3
