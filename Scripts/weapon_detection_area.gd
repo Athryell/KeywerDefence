@@ -4,7 +4,13 @@ class_name WeaponDetectionArea
 @onready var area = $DetectionArea
 
 
-func _release_bullet():
+func key_press():
+	super()
+	
+	_shoot()
+
+
+func _shoot():
 	var enemies_in_range = area.get_overlapping_areas()
 	if enemies_in_range.size() == 0:
 		return
@@ -18,3 +24,14 @@ func _release_bullet():
 	new_bullet.look_at(_target.global_position)
 	
 	bulletsContainer.add_child(new_bullet)
+
+
+func findClosestEnemy(enemies: Array) -> Object:
+	var closest_enemy = null
+	var closest_distance = INF
+	for enemy in enemies:
+		var distance = global_position.distance_to(enemy.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_enemy = enemy
+	return closest_enemy
