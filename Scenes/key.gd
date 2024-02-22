@@ -32,6 +32,8 @@ func _unhandled_input(event):
 	if event is InputEventKey and event.as_text_keycode() == key_input_bind.to_upper():
 		if event.pressed and not event.echo:
 			handle_key_press()
+		elif event.pressed and event.echo:
+			handle_key_held()
 		elif event.is_released():
 			handle_key_released()
 
@@ -39,8 +41,13 @@ func _unhandled_input(event):
 func handle_key_press():
 	$Key_sprite.frame = 1
 	if weapon:
-		weapon.shoot()
+		weapon.key_press()
 
+func handle_key_held():
+	if weapon:
+		weapon.key_held()
 
 func handle_key_released():
 	$Key_sprite.frame = 0
+	if weapon:
+		weapon.key_released()
