@@ -17,7 +17,7 @@ var _target
 
 
 func _ready():
-	rechargeTimer.set_wait_time(0.1)
+	rechargeTimer.set_wait_time(RECHARGE_TIME)
 	rechargeTimer.timeout.connect(_on_timer_timeout)
 
 
@@ -25,27 +25,23 @@ func _on_timer_timeout():
 	_canShoot = true
 
 
-func shoot():
+func key_press():
 	if _canShoot:
 		_canShoot = false
+
+
+func key_held():
+	pass
+
+
+func key_released():
+	if not _canShoot and rechargeTimer.is_stopped():
 		rechargeTimer.start()
-		_release_bullet()
 
 
-func _release_bullet():
-	print("Release bullet not implemented for Weapon " + weapon_letter )
+func _shoot():
+	print("Shoot not implemented for Weapon " + weapon_letter )
 
 
 func get_texture():
 	return load(SPRITE_BASE_PATH_ACTIVE + weapon_letter + SPRITE_FORMAT_PATH)
-
-
-func findClosestEnemy(enemies: Array) -> Object:
-	var closest_enemy = null
-	var closest_distance = INF
-	for enemy in enemies:
-		var distance = global_position.distance_to(enemy.global_position)
-		if distance < closest_distance:
-			closest_distance = distance
-			closest_enemy = enemy
-	return closest_enemy

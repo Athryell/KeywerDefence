@@ -2,7 +2,7 @@ extends WeaponDetectionArea
 
 @onready var targetArea = $TargetArea_T
 
-func _release_bullet():
+func _shoot():
 	var enemies_in_range = area.get_overlapping_areas()
 	if enemies_in_range.size() == 0:
 		return
