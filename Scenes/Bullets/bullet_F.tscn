@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbrl53s22ngmo"]
+
+[ext_resource type="Script" path="res://Scenes/Bullets/bullet_F.gd" id="1_6frj5"]
+[ext_resource type="Texture2D" uid="uid://c1a7meowtasbe" path="res://Sprites/WhitePixel.png" id="2_45vlj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8b5a4"]
+size = Vector2(4.99907, 35.0009)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef357"]
+size = Vector2(16.5, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn444"]
+size = Vector2(36, 15)
+
+[node name="Bullet_F" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_6frj5")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-0.0710697, -2.088)
+rotation = 1.57033
+scale = Vector2(4.785, 35.833)
+texture = ExtResource("2_45vlj")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(-16.0711, -9.088)
+rotation = 3.14159
+scale = Vector2(3.85783, 11.824)
+texture = ExtResource("2_45vlj")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(-2.07107, -9.088)
+rotation = 3.14159
+scale = Vector2(3.85783, 11.824)
+texture = ExtResource("2_45vlj")
+
+[node name="WallCallision" type="CollisionShape2D" parent="."]
+position = Vector2(0.429164, -2.58776)
+rotation = 1.57033
+shape = SubResource("RectangleShape2D_8b5a4")
+disabled = true
+
+[node name="Spikes" type="Area2D" parent="."]
+position = Vector2(-0.0710697, -2.088)
+collision_layer = 0
+collision_mask = 2
+
+[node name="SpikeCollision" type="CollisionShape2D" parent="Spikes"]
+position = Vector2(-9, -7.5)
+shape = SubResource("RectangleShape2D_ef357")
+disabled = true
+
+[node name="TimerDOT" type="Timer" parent="."]
+autostart = true
+
+[node name="AreaOfWall" type="Area2D" parent="."]
+position = Vector2(-0.0710697, -2.088)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShapeOfWall" type="CollisionShape2D" parent="AreaOfWall"]
+unique_name_in_owner = true
+position = Vector2(0.0710697, -4.912)
+shape = SubResource("RectangleShape2D_nn444")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="TimerDOT" to="." method="_on_timer_dot_timeout"]
