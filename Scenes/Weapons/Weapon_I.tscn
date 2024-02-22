@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/base_weapon.tscn" id="1_nqix7"]
 [ext_resource type="Script" path="res://Scripts/weapon_detection_area.gd" id="2_18cbk"]
-[ext_resource type="PackedScene" uid="uid://dsaqokso3bb2p" path="res://Scenes/Bullets/bullet_I.tscn" id="3_0w5b5"]
+[ext_resource type="PackedScene" uid="uid://dsaqokso3bb2p" path="res://Scenes/Bullets/bullet_i.tscn" id="3_0w5b5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o48xd"]
 radius = 500.0
@@ -10,7 +10,7 @@ radius = 500.0
 [node name="Weapon_I" instance=ExtResource("1_nqix7")]
 script = ExtResource("2_18cbk")
 bulletScene = ExtResource("3_0w5b5")
-RECHARGE_TIME = 0.2
+RECHARGE_TIME = 0.1
 description = "Basic laser, very fast & very weak"
 
 [node name="DetectionArea" type="Area2D" parent="." index="2"]
