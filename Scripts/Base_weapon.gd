@@ -1,47 +1,37 @@
-extends Node2D
-class_name BaseWeapon
+extends BaseWeapon
+class_name WeaponDetectionArea
 
-const SPRITE_BASE_PATH_ACTIVE := "res://Sprites/Spritesheets Letters/"
-const SPRITE_FORMAT_PATH := ".png"
-
-@export var bulletScene: PackedScene
-@export var RECHARGE_TIME: float
-@export_multiline var description
-
-@onready var bulletsContainer = get_tree().get_root().get_node("/root/Main/bullets_container")
-@onready var rechargeTimer = $RechargeTimer
-
-var weapon_letter: String
-var _canShoot := true
-var _target
-
-
-func _ready():
-	rechargeTimer.set_wait_time(RECHARGE_TIME)
-	rechargeTimer.timeout.connect(_on_timer_timeout)
-
-
-func _on_timer_timeout():
-	_canShoot = true
+@onready var area = $DetectionArea
 
 
 func key_press():
-	if _canShoot:
-		_canShoot = false
-
-
-func key_held():
-	pass
-
-
-func key_released():
-	if not _canShoot and rechargeTimer.is_stopped():
-		rechargeTimer.start()
+	super()
+	
+	_shoot()
 
 
 func _shoot():
-	print("Shoot not implemented for Weapon " + weapon_letter )
+	var enemies_in_range = area.get_overlapping_areas()
+	if enemies_in_range.size() == 0:
+		return
+	elif enemies_in_range.size() == 1:
+		_target = enemies_in_range[0]
+	else:
+		_target = findClosestEnemy(enemies_in_range)
+		
+	var new_bullet = bulletScene.instantiate()
+	new_bullet.position = global_position
+	new_bullet.look_at(_target.global_position)
+	
+	bulletsContainer.add_child(new_bullet)
 
 
-func get_texture():
-	return load(SPRITE_BASE_PATH_ACTIVE + weapon_letter + SPRITE_FORMAT_PATH)
+func findClosestEnemy(enemies: Array) -> Object:
+	var closest_enemy = null
+	var closest_distance = INF
+	for enemy in enemies:
+		var distance = global_position.distance_to(enemy.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_enemy = enemy
+	return closest_enemy
