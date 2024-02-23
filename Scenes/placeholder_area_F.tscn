@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1ohn3v5dafwb"]
+[gd_scene load_steps=3 format=3 uid="uid://c1ohn3v5dafwb"]
+
+[ext_resource type="Script" path="res://Scenes/placeholder_area_F.gd" id="1_nstxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kwtfk"]
 size = Vector2(36, 18)
@@ -7,9 +9,15 @@ size = Vector2(36, 18)
 collision_layer = 2147483648
 collision_mask = 0
 priority = 1
+script = ExtResource("1_nstxe")
 
 [node name="CollisionPlaceholder_F" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_kwtfk")
 one_way_collision_margin = 0.0
 debug_color = Color(0.741176, 0.411765, 0.905882, 0.160784)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
