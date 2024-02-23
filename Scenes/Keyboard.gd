@@ -1,23 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1ohn3v5dafwb"]
+extends Node2D
 
-[ext_resource type="Script" path="res://Scenes/placeholder_area_F.gd" id="1_nstxe"]
+const key_scene := preload("res://Scenes/key.tscn")
+const KEY_DIMENSIONS := 57
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwtfk"]
-size = Vector2(36, 18)
 
-[node name="PlaceholderArea" type="Area2D"]
-collision_layer = 2147483648
-collision_mask = 0
-priority = 1
-script = ExtResource("1_nstxe")
+func _ready():
+	init_keyboard()
 
-[node name="CollisionPlaceholder" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
-shape = SubResource("RectangleShape2D_kwtfk")
-one_way_collision_margin = 0.0
-debug_color = Color(0.741176, 0.411765, 0.905882, 0.160784)
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
+func init_keyboard():
+	var keyboard_layout = [
+		"QWERTYUIOP",
+		"ASDFGHJKL",
+		"ZXCVBNM"
+	]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+	for row in range(keyboard_layout.size()):
+		for col in range(keyboard_layout[row].length()):
+			var letter = keyboard_layout[row][col]
+			var new_key = key_scene.instantiate() as KeyScene
+			new_key.name = "Key_" + letter
+			var keyboard_pos = Vector2(col, row)
+			new_key.set_keyboard_coordinates(keyboard_pos)
+			new_key.set_button_bind(letter)
+			new_key.position.x = col * KEY_DIMENSIONS + row * 18
+			new_key.position.y = row * KEY_DIMENSIONS
+
+			if letter in GameManager.get_discovered_letters():
+				new_key.set_weapon(letter)
+			
+			add_child(new_key)
+	
+	
+
+
