@@ -1,7 +1,7 @@
 extends Node
 
 var starting_letters = "I"
-var _letters_discovered = ["L", "T", "F"] #"V", "U", "C", "S", "W"
+var _letters_discovered = ["L", "T", "F", "X", "E"] #"V", "U", "C", "S", "W"
 
 var is_merger_open := false
 
