@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmn2dcmrw0j1o"]
+
+[ext_resource type="Script" path="res://Bullet_X.gd" id="1_5qy22"]
+[ext_resource type="Texture2D" uid="uid://c1a7meowtasbe" path="res://Sprites/WhitePixel.png" id="2_broet"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjpum"]
+radius = 20.0
+height = 40.0
+
+[node name="Bullet_X" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_5qy22")
+ROTATION_SPEED = 8
+DMG = 2
+SPEED = 400
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57033
+shape = SubResource("CapsuleShape2D_xjpum")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="Sprites"]
+modulate = Color(10.526, 14.286, 13.534, 1)
+rotation = 1.57033
+scale = Vector2(4, 40)
+texture = ExtResource("2_broet")
+
+[node name="Icon2" type="Sprite2D" parent="Sprites"]
+modulate = Color(10.526, 14.286, 13.534, 1)
+rotation = -3.14159
+scale = Vector2(4, 40)
+texture = ExtResource("2_broet")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
