@@ -20,6 +20,8 @@ func init_keyboard():
 			var letter = keyboard_layout[row][col]
 			var new_key = key_scene.instantiate() as KeyScene
 			new_key.name = "Key_" + letter
+			var keyboard_pos = Vector2(col, row)
+			new_key.set_keyboard_coordinates(keyboard_pos)
 			new_key.set_button_bind(letter)
 			new_key.position.x = col * KEY_DIMENSIONS + row * 18
 			new_key.position.y = row * KEY_DIMENSIONS
