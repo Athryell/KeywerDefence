@@ -14,12 +14,11 @@ const SPRITE_FORMAT_PATH := ".png"
 var weapon_letter: String
 var _canShoot := true
 var _target
-
+var _position_on_keyboard: Vector2
 
 func _ready():
 	rechargeTimer.set_wait_time(RECHARGE_TIME)
 	rechargeTimer.timeout.connect(_on_timer_timeout)
-
 
 func _on_timer_timeout():
 	_canShoot = true
@@ -45,3 +44,10 @@ func _shoot():
 
 func get_texture():
 	return load(SPRITE_BASE_PATH_ACTIVE + weapon_letter + SPRITE_FORMAT_PATH)
+
+func set_position_on_keyboard(pos_on_keyboard: Vector2) -> void:
+	_position_on_keyboard = pos_on_keyboard
+	
+func get_position_on_keyboard() -> Vector2:
+	return Vector2(_position_on_keyboard)
+
