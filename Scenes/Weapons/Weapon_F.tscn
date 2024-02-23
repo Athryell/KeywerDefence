@@ -30,31 +30,31 @@ points = PackedVector2Array(0, 0, 0, -10)
 width = 5.0
 default_color = Color(0.737255, 0.337255, 0.898039, 1)
 
-[node name="TargetArea_F" type="Area2D" parent="." index="5"]
+[node name="TargetArea" type="Area2D" parent="." index="5"]
 visible = false
 position = Vector2(0, -4)
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionTargetArea_F" type="CollisionShape2D" parent="TargetArea_F" index="0"]
+[node name="CollisionTargetArea" type="CollisionShape2D" parent="TargetArea" index="0"]
 position = Vector2(1, -5)
 shape = SubResource("RectangleShape2D_cj04t")
 one_way_collision_margin = 0.0
 
-[node name="TargetSprite" type="Sprite2D" parent="TargetArea_F" index="1"]
+[node name="TargetSprite" type="Sprite2D" parent="TargetArea" index="1"]
 position = Vector2(1, 1)
 rotation = -1.56551
 scale = Vector2(0.05, 0.272)
 texture = ExtResource("3_k0amw")
 
-[node name="TargetSprite2" type="Sprite2D" parent="TargetArea_F/TargetSprite" index="0"]
+[node name="TargetSprite2" type="Sprite2D" parent="TargetArea/TargetSprite" index="0"]
 position = Vector2(118.518, -51.5865)
 rotation = 1.53865
 scale = Vector2(0.164466, 2.90074)
 skew = 0.0312786
 texture = ExtResource("3_k0amw")
 
-[node name="TargetSprite3" type="Sprite2D" parent="TargetArea_F/TargetSprite" index="1"]
+[node name="TargetSprite3" type="Sprite2D" parent="TargetArea/TargetSprite" index="1"]
 position = Vector2(119.787, -7.46945)
 rotation = 1.53865
 scale = Vector2(0.164466, 2.90074)
