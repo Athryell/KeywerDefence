@@ -13,6 +13,7 @@ var _durability
 
 
 func initWall():
+	$AreaOfWall.set_collision_layer_value(32, true)
 	_durability = STARTING_DURABILITY
 	$WallCallision.set_deferred("disabled", false)
 	$Spikes/SpikeCollision.set_deferred("disabled", false)
