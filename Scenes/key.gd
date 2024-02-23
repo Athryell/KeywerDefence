@@ -10,6 +10,8 @@ var key_input_bind: String
 var is_active: bool
 var weapon
 
+var _keyboard_coordinates := Vector2.ZERO
+
 func set_button_bind(input_key):
 	key_input_bind = input_key
 	$Key_sprite.texture = load(SPRITE_BASE_PATH_NOT_ACTIVE + input_key + SPRITE_FORMAT_PATH)
@@ -20,6 +22,7 @@ func set_weapon(letter):
 	if new_weapon:
 		weapon = new_weapon.instantiate()
 		weapon.weapon_letter = letter
+		weapon.set_position_on_keyboard(get_keyboard_coordinates())
 		$Key_sprite.texture = weapon.get_texture()
 		add_child(weapon)
 
@@ -51,3 +54,9 @@ func handle_key_released():
 	$Key_sprite.frame = 0
 	if weapon:
 		weapon.key_released()
+
+func set_keyboard_coordinates(pos_on_keyboard: Vector2) -> void:
+	_keyboard_coordinates = pos_on_keyboard
+	
+func get_keyboard_coordinates() -> Vector2:
+	return Vector2(_keyboard_coordinates)
