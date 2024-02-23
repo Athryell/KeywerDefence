@@ -13,7 +13,7 @@ class_name WeaponCharge
 
 const STARTING_DISTANCE: float = 100 #TODO: changes according to the line position on the keyboard
 var distance: int = 0
-var final_target_po: Vector2 = Vector2.ZERO
+var final_target_pos: Vector2 = Vector2.ZERO
 
 var bullet_size: Vector2
 var wall_dictionary = {}
@@ -40,8 +40,8 @@ func key_held():
 func key_released():
 	line.visible = false
 	targetArea.visible = false
-	final_target_po = await get_final_position(distance)
-	set_placeholder(final_target_po)
+	final_target_pos = await get_final_position(distance)
+	set_placeholder(final_target_pos)
 	distance = 0
 	_shoot()
 
@@ -49,18 +49,19 @@ func key_released():
 func _shoot():
 	var new_fence_bullet = bulletScene.instantiate()
 	new_fence_bullet.position = position
+	print(position)
 	add_child(new_fence_bullet)
 	
 	var starting_scale = new_fence_bullet.scale
-	var halfway_position = Vector2(final_target_po.x * 0.5, final_target_po.y * 0.5)
-	var final_position = Vector2(final_target_po.x, final_target_po.y)
-	
+	var halfway_position = Vector2(final_target_pos.x * 0.5, final_target_pos.y * 0.5)
+
 	var tween = get_tree().create_tween()
 	tween.tween_property(new_fence_bullet, "position", halfway_position, THROW_SPEED * 0.5).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(new_fence_bullet, "scale", starting_scale * 1.3, THROW_SPEED * 0.5).set_ease(Tween.EASE_OUT)
-	tween.tween_property(new_fence_bullet, "position", final_position, THROW_SPEED * 0.5).set_ease(Tween.EASE_IN)
+	tween.tween_property(new_fence_bullet, "position", final_target_pos, THROW_SPEED * 0.5).set_ease(Tween.EASE_IN)
 	tween.parallel().tween_property(new_fence_bullet, "scale", starting_scale, THROW_SPEED * 0.5).set_ease(Tween.EASE_IN)
 	tween.tween_callback(new_fence_bullet.initWall)
+	
 
 
 func get_final_position(dist: float) -> Vector2:
@@ -74,7 +75,15 @@ func get_final_position(dist: float) -> Vector2:
 	await get_tree().create_timer(0.001).timeout
 	
 	if ray.is_colliding():
-		wall_height = ray.get_collider().position.y
+		#TODO: it would be better to change the layout of bullet
+		#and have the parent as main collider for checks
+		#and the children for the functionality such as damagable wall and spikes
+		if ray.get_collider().name == "AreaOfWall": #
+			wall_height = ray.get_collider().get_parent().position.y
+		else:
+			wall_height = ray.get_collider().position.y
+		
+		print(wall_height)
 		
 	var pos := Vector2(position.x, wall_height)
 	
@@ -92,7 +101,7 @@ func get_final_position(dist: float) -> Vector2:
 			else:
 				pos.x -= wallArea.x * amount_of_checks
 			checkRight = !checkRight
-
+	print(pos)
 	return pos
 	
 
@@ -101,4 +110,5 @@ func set_placeholder(pos):
 	var new_placeholder = placeholder.instantiate()
 	new_placeholder.get_node("CollisionPlaceholder_F").get_shape().set_size(wallArea)
 	new_placeholder.position = pos
+	new_placeholder.get_node("Timer").set_wait_time(THROW_SPEED)
 	add_child(new_placeholder)
