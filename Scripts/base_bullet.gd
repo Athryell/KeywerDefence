@@ -9,6 +9,9 @@ class_name BaseBullet
 var RANGE = 1500
 var travelled_distance = 0
 
+func _ready():
+	pass
+
 func _physics_process(delta):
 	travelled_distance += SPEED * delta
 	if travelled_distance > RANGE:
