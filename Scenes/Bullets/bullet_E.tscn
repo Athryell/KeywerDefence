@@ -1,48 +1,29 @@
 [gd_scene load_steps=6 format=3 uid="uid://bc6fanleo40m4"]
 
 [ext_resource type="Script" path="res://Scenes/Bullets/bullet_F.gd" id="1_xxxhj"]
-[ext_resource type="Texture2D" uid="uid://c1a7meowtasbe" path="res://Sprites/WhitePixel.png" id="2_e8ctv"]
+[ext_resource type="Texture2D" uid="uid://4xktcjrscy7h" path="res://Sprites/Bullets/bullet_E.png" id="2_qpfn5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8b5a4"]
-size = Vector2(4.99907, 35.9294)
+size = Vector2(3.91198, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef357"]
-size = Vector2(36.25, 11)
+size = Vector2(33, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn444"]
-size = Vector2(36, 15.5)
+size = Vector2(34, 15.5)
 
 [node name="Bullet_E" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_xxxhj")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-0.0710697, -2.088)
-rotation = 1.57033
-scale = Vector2(4.785, 35.833)
-texture = ExtResource("2_e8ctv")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(-16.0711, -9.088)
-rotation = 3.14159
-scale = Vector2(3.85783, 11.824)
-texture = ExtResource("2_e8ctv")
-
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(-2.38419e-07, -9)
-rotation = 3.14159
-scale = Vector2(3.85783, 11.824)
-texture = ExtResource("2_e8ctv")
-
-[node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(16, -9)
-rotation = 3.14159
-scale = Vector2(3.85783, 11.824)
-texture = ExtResource("2_e8ctv")
+[node name="BulletE" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-07, -5)
+scale = Vector2(0.0965, 0.0965)
+texture = ExtResource("2_qpfn5")
 
 [node name="WallCallision" type="CollisionShape2D" parent="."]
-position = Vector2(-0.035096, -2.58754)
+position = Vector2(-2.10404e-05, -2.04401)
 rotation = 1.57033
 shape = SubResource("RectangleShape2D_8b5a4")
 disabled = true
@@ -53,7 +34,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="SpikeCollision" type="CollisionShape2D" parent="Spikes"]
-position = Vector2(0.875, -6.5)
+position = Vector2(1.5, -6.5)
 shape = SubResource("RectangleShape2D_ef357")
 disabled = true
 
