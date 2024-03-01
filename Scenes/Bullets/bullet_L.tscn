@@ -1,39 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkb7bqufltrao"]
 
 [ext_resource type="Script" path="res://Scenes/Bullets/Bullet_L.gd" id="1_nc6wg"]
-[ext_resource type="Texture2D" uid="uid://c1a7meowtasbe" path="res://Sprites/WhitePixel.png" id="2_hj8kv"]
+[ext_resource type="Texture2D" uid="uid://q6kpasvowuxe" path="res://Sprites/Bullets/bullet_L.png" id="2_pm0po"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjpum"]
-radius = 2.00047
-height = 25.4297
+[sub_resource type="CircleShape2D" id="CircleShape2D_we282"]
+radius = 12.0
 
 [node name="Bullet_L" type="Area2D"]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_nc6wg")
 DMG = 2
-SPEED = 1000
-
-[node name="Icon" type="Sprite2D" parent="."]
-rotation = 1.57033
-scale = Vector2(4.00463, 29.9916)
-texture = ExtResource("2_hj8kv")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(-13, 7)
-rotation = 3.14159
-scale = Vector2(3.85783, 17.8293)
-texture = ExtResource("2_hj8kv")
+SPEED = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 0)
 rotation = 1.57033
-shape = SubResource("CapsuleShape2D_xjpum")
+shape = SubResource("CircleShape2D_we282")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-13, 7)
-rotation = 3.14159
-scale = Vector2(0.92835, 0.707835)
-shape = SubResource("CapsuleShape2D_xjpum")
+[node name="BulletL" type="Sprite2D" parent="."]
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.0233333, 0.0233333)
+texture = ExtResource("2_pm0po")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
