@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://dbrl53s22ngmo"]
 
 [ext_resource type="Script" path="res://Scenes/Bullets/bullet_F.gd" id="1_6frj5"]
-[ext_resource type="Texture2D" uid="uid://c1a7meowtasbe" path="res://Sprites/WhitePixel.png" id="2_45vlj"]
+[ext_resource type="Texture2D" uid="uid://c8jfs0awsyc0h" path="res://Sprites/Bullets/bullet_F.png" id="2_cgojh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8b5a4"]
-size = Vector2(4.99907, 35.0009)
+size = Vector2(5.5, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ef357"]
-size = Vector2(16.5, 9)
+size = Vector2(18, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn444"]
-size = Vector2(36, 15)
+size = Vector2(34, 20.5)
 
 [node name="Bullet_F" type="Area2D"]
 collision_layer = 4
@@ -18,25 +18,12 @@ collision_mask = 0
 script = ExtResource("1_6frj5")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-0.0710697, -2.088)
-rotation = 1.57033
-scale = Vector2(4.785, 35.833)
-texture = ExtResource("2_45vlj")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(-16.0711, -9.088)
-rotation = 3.14159
-scale = Vector2(3.85783, 11.824)
-texture = ExtResource("2_45vlj")
-
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(-2.07107, -9.088)
-rotation = 3.14159
-scale = Vector2(3.85783, 11.824)
-texture = ExtResource("2_45vlj")
+position = Vector2(-1, -6)
+scale = Vector2(0.10275, 0.10275)
+texture = ExtResource("2_cgojh")
 
 [node name="WallCallision" type="CollisionShape2D" parent="."]
-position = Vector2(0.429164, -2.58776)
+position = Vector2(-0.000115871, -2.25047)
 rotation = 1.57033
 shape = SubResource("RectangleShape2D_8b5a4")
 disabled = true
@@ -47,7 +34,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="SpikeCollision" type="CollisionShape2D" parent="Spikes"]
-position = Vector2(-9, -7.5)
+position = Vector2(-7.92893, -10.412)
 shape = SubResource("RectangleShape2D_ef357")
 disabled = true
 
@@ -61,7 +48,7 @@ collision_mask = 0
 
 [node name="CollisionShapeOfWall" type="CollisionShape2D" parent="AreaOfWall"]
 unique_name_in_owner = true
-position = Vector2(0.0710697, -4.912)
+position = Vector2(0.0710697, -7.662)
 shape = SubResource("RectangleShape2D_nn444")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
