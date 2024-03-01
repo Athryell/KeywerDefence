@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcmx37w8yqufw"]
+[gd_scene load_steps=5 format=3 uid="uid://dcmx37w8yqufw"]
 
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="1_x5qir"]
 [ext_resource type="Script" path="res://Scenes/Keyboard.gd" id="2_jf744"]
+[ext_resource type="Script" path="res://Scenes/Btn_StartNextWave.gd" id="3_xyiap"]
 
 [sub_resource type="Environment" id="Environment_jae8t"]
 background_mode = 3
@@ -18,7 +19,6 @@ script = ExtResource("1_x5qir")
 
 [node name="Timer" type="Timer" parent="EnemySpawner"]
 wait_time = 2.0
-autostart = true
 
 [node name="Keyboard" type="Node2D" parent="."]
 position = Vector2(309, 466)
@@ -29,4 +29,20 @@ script = ExtResource("2_jf744")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jae8t")
 
+[node name="Btn_StartNextWave" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -51.0
+offset_right = -25.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Start Next Wave"
+script = ExtResource("3_xyiap")
+
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
+[connection signal="button_down" from="Btn_StartNextWave" to="Btn_StartNextWave" method="_on_button_down"]
