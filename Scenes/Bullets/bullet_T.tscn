@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://druro8ksxri2w"]
+[gd_scene load_steps=10 format=3 uid="uid://druro8ksxri2w"]
 
 [ext_resource type="Script" path="res://Scenes/Bullets/Bullet_T.gd" id="1_7jx5w"]
 [ext_resource type="Texture2D" uid="uid://c1a7meowtasbe" path="res://Sprites/WhitePixel.png" id="2_fowpt"]
+[ext_resource type="Texture2D" uid="uid://d3bvnr2kape68" path="res://Sprites/Bullets/bullet_T.png" id="3_gnmv4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3uk4"]
 radius = 54.9181
@@ -124,17 +125,11 @@ texture = ExtResource("2_fowpt")
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="Icon" type="Sprite2D" parent="Node2D"]
-position = Vector2(-15.003, 0.0727465)
-rotation = 1.57033
-scale = Vector2(5.16081, 29.9916)
-texture = ExtResource("2_fowpt")
-
-[node name="Icon2" type="Sprite2D" parent="Node2D"]
-position = Vector2(-26, -5.96046e-08)
-rotation = 3.14159
-scale = Vector2(8.37765, 26.9893)
-texture = ExtResource("2_fowpt")
+[node name="BulletT" type="Sprite2D" parent="Node2D"]
+position = Vector2(-17, -2.38419e-07)
+rotation = -1.5708
+scale = Vector2(0.111281, 0.111281)
+texture = ExtResource("3_gnmv4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 2.32831e-10)
