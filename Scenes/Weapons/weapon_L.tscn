@@ -1,17 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw0w81h314juf"]
 
 [ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/base_weapon.tscn" id="1_mira2"]
-[ext_resource type="Script" path="res://Scripts/weapon_detection_area.gd" id="2_1fyj3"]
+[ext_resource type="Script" path="res://Scenes/Weapons/weapon_L.gd" id="2_7afi1"]
 [ext_resource type="PackedScene" uid="uid://bkb7bqufltrao" path="res://Scenes/Bullets/bullet_L.tscn" id="3_ehgdf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hc7o"]
 radius = 500.064
 
 [node name="Weapon_L" instance=ExtResource("1_mira2")]
-script = ExtResource("2_1fyj3")
+script = ExtResource("2_7afi1")
 bulletScene = ExtResource("3_ehgdf")
-RECHARGE_TIME = 0.8
-description = "Pistol, fast & weak"
+RECHARGE_TIME = 1.5
 
 [node name="DetectionArea" type="Area2D" parent="." index="2"]
 collision_layer = 0
