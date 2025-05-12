@@ -1,22 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqmeauel75odh"]
+[gd_scene load_steps=4 format=3 uid="uid://pm413dbcyxby"]
 
-[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/base_weapon.tscn" id="1_wuh6r"]
-[ext_resource type="Script" path="res://Scripts/weapon_detection_area.gd" id="2_8f43d"]
-[ext_resource type="PackedScene" uid="uid://r1rcrd6j4upd" path="res://Scenes/Bullets/bullet_v.tscn" id="3_4jdvk"]
+[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/Weapons/base_weapon.tscn" id="1_wuh6r"]
+[ext_resource type="PackedScene" uid="uid://bgi176urrop75" path="res://Components/component_weapon_closest_enemy.tscn" id="4_do845"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8tbc"]
 radius = 500.0
 
 [node name="Weapon_V" instance=ExtResource("1_wuh6r")]
-script = ExtResource("2_8f43d")
-bulletScene = ExtResource("3_4jdvk")
-RECHARGE_TIME = 2.0
-description = "Boomerang"
+recharge_time = 1.5
 
-[node name="DetectionArea" type="Area2D" parent="." index="3"]
-collision_layer = 0
-collision_mask = 2
+[node name="ComponentWeaponClosestEnemy" parent="." index="0" instance=ExtResource("4_do845")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentWeaponClosestEnemy" index="0"]
 shape = SubResource("CircleShape2D_f8tbc")
 one_way_collision_margin = 0.0

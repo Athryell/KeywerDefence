@@ -1,36 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://kjgpdbpk8mwq"]
+[gd_scene load_steps=5 format=3 uid="uid://kjgpdbpk8mwq"]
 
-[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/base_weapon.tscn" id="1_1f8l6"]
-[ext_resource type="Script" path="res://Scripts/weapon_charge.gd" id="2_wtjx5"]
-[ext_resource type="Texture2D" uid="uid://v1gmyugn2if4" path="res://Sprites/icon.svg" id="3_k0amw"]
-[ext_resource type="PackedScene" uid="uid://dbrl53s22ngmo" path="res://Scenes/Bullets/bullet_F.tscn" id="3_w0hbp"]
-[ext_resource type="PackedScene" uid="uid://c1ohn3v5dafwb" path="res://Scenes/placeholder_area_F.tscn" id="5_wa3ki"]
+[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/Weapons/base_weapon.tscn" id="1_5skfv"]
+[ext_resource type="PackedScene" uid="uid://1jeuw5sryqxy" path="res://Components/component_weapon_charge.tscn" id="2_d23ef"]
+[ext_resource type="Texture2D" uid="uid://bawf6iogegbuk" path="res://Sprites/icon.svg" id="4_o2iy0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cj04t"]
 size = Vector2(36, 18)
 
-[node name="Weapon_F" instance=ExtResource("1_1f8l6")]
-script = ExtResource("2_wtjx5")
-LOAD_SPEED = 5.0
-placeholder = ExtResource("5_wa3ki")
-bulletScene = ExtResource("3_w0hbp")
-RECHARGE_TIME = 2.0
-description = " Half spike wall, fast"
+[node name="Weapon_F" instance=ExtResource("1_5skfv")]
 
-[node name="RayCast2D" type="RayCast2D" parent="." index="3"]
+[node name="ComponentWeaponCharge" parent="." index="0" instance=ExtResource("2_d23ef")]
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="4"]
+visible = false
 target_position = Vector2(0, -100)
 collision_mask = 2147483648
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Line2D" type="Line2D" parent="." index="4"]
+[node name="Line2D" type="Line2D" parent="." index="5"]
 visible = false
 points = PackedVector2Array(0, 0, 0, -10)
 width = 5.0
 default_color = Color(0.737255, 0.337255, 0.898039, 1)
 
-[node name="TargetArea" type="Area2D" parent="." index="5"]
+[node name="TargetArea" type="Area2D" parent="." index="6"]
 visible = false
 position = Vector2(0, -4)
 collision_layer = 0
@@ -45,18 +40,18 @@ one_way_collision_margin = 0.0
 position = Vector2(1, 1)
 rotation = -1.56551
 scale = Vector2(0.05, 0.272)
-texture = ExtResource("3_k0amw")
+texture = ExtResource("4_o2iy0")
 
 [node name="TargetSprite2" type="Sprite2D" parent="TargetArea/TargetSprite" index="0"]
 position = Vector2(118.518, -51.5865)
 rotation = 1.53865
 scale = Vector2(0.164466, 2.90074)
 skew = 0.0312786
-texture = ExtResource("3_k0amw")
+texture = ExtResource("4_o2iy0")
 
 [node name="TargetSprite3" type="Sprite2D" parent="TargetArea/TargetSprite" index="1"]
 position = Vector2(119.787, -7.46945)
 rotation = 1.53865
 scale = Vector2(0.164466, 2.90074)
 skew = 0.0312786
-texture = ExtResource("3_k0amw")
+texture = ExtResource("4_o2iy0")

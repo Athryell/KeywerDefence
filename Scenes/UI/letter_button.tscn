@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cna6g5itk0psj"]
 
-[ext_resource type="Script" path="res://Scenes/UI/letter_button.gd" id="1_8do53"]
+[ext_resource type="Script" uid="uid://cgbu1kmuj3hgk" path="res://Scenes/UI/letter_button.gd" id="1_8do53"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myvej"]
 

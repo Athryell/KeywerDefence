@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxyqw8jv04e3k"]
+
+[ext_resource type="Script" uid="uid://caqwdnnejdwin" path="res://Scenes/UI/letter_merge_ui.gd" id="1_cphku"]
+[ext_resource type="PackedScene" uid="uid://cv8d8blr5b6v7" path="res://Scenes/UI/drop_button.tscn" id="2_o4mij"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cphku")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 15
+
+[node name="AlphabetContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LeftButton" parent="." instance=ExtResource("2_o4mij")]
+layout_mode = 1
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -100.0
+offset_right = -89.0
+offset_bottom = 100.0
+grow_vertical = 2
+
+[node name="LabelPlus" type="Label" parent="."]
+layout_mode = 2
+offset_left = 612.0
+offset_top = 282.0
+offset_right = 669.0
+offset_bottom = 422.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "+"
+
+[node name="RightButton" parent="." instance=ExtResource("2_o4mij")]
+layout_mode = 1
+anchors_preset = 8
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 94.0
+offset_top = -100.0
+offset_right = 294.0
+offset_bottom = 100.0
+grow_vertical = 2
+
+[node name="GoToGame" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -59.0
+offset_right = 127.0
+offset_bottom = -28.0
+grow_vertical = 0
+text = "Go to game"
+
+[connection signal="button_down" from="GoToGame" to="." method="_on_go_to_game_button_down"]

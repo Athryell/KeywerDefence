@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://ph8nbf3vdx2b"]
+
+[ext_resource type="Script" uid="uid://cmwv7ts4kv42l" path="res://Scenes/UI/letter_combiner_ui.gd" id="1_1qo8w"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1qo8w")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 15
+
+[node name="AlphabetContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RightDrop" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 231.0
+offset_right = 868.0
+offset_bottom = 431.0
+
+[node name="DropLabel" type="Label" parent="RightDrop"]
+layout_mode = 2
+
+[node name="LabelPlus" type="Label" parent="."]
+layout_mode = 2
+offset_left = 547.5
+offset_top = 257.0
+offset_right = 604.5
+offset_bottom = 397.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "+"
+
+[node name="LeftDrop" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 233.0
+offset_right = 500.0
+offset_bottom = 433.0
+
+[node name="DropLabel" type="Label" parent="LeftDrop"]
+layout_mode = 2

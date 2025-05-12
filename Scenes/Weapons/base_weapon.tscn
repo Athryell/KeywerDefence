@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7m30ggpnamjq"]
+
+[ext_resource type="Script" uid="uid://jwvrenuub7vt" path="res://Scripts/Weapons/base_weapon.gd" id="1_1nkl4"]
+[ext_resource type="Script" uid="uid://cayblmcnivj45" path="res://Scripts/Weapons/weapon_vfx.gd" id="1_jh7tb"]
+[ext_resource type="Texture2D" uid="uid://c46lojw1x3ju5" path="res://Sprites/Spritesheets Letters/A.png" id="2_tcxpf"]
+[ext_resource type="Texture2D" uid="uid://d0u6wqp5uuwae" path="res://Sprites/KeycapCharge/keycap_charge_animation.png" id="3_0cu2q"]
+[ext_resource type="Script" uid="uid://c8f0iyxojahyk" path="res://Scripts/Weapons/weapon_drag_area.gd" id="4_mbrqq"]
+[ext_resource type="Script" uid="uid://bqj3jo5jxcjyy" path="res://Scripts/Weapons/HitArea.gd" id="5_5xip8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gt78j"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 20.0
+emission_ring_radius = 20.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+angular_velocity_min = -302.4
+angular_velocity_max = 302.4
+orbit_velocity_min = -0.04
+orbit_velocity_max = -0.04
+radial_velocity_min = 100.0
+radial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -100.0
+scale_max = 4.0
+color = Color(1, 1, 0, 0.811765)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3deo"]
+size = Vector2(50, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nke5q"]
+size = Vector2(48, 49)
+
+[node name="BaseWeapon" type="Node2D"]
+script = ExtResource("1_1nkl4")
+
+[node name="RechargeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VFX" type="Node2D" parent="."]
+script = ExtResource("1_jh7tb")
+
+[node name="SpriteLetter" type="Sprite2D" parent="VFX"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_tcxpf")
+hframes = 3
+
+[node name="SpriteCharge" type="Sprite2D" parent="VFX"]
+scale = Vector2(3, 3)
+texture = ExtResource("3_0cu2q")
+hframes = 6
+frame = 5
+
+[node name="SuperShotParticles" type="GPUParticles2D" parent="VFX"]
+position = Vector2(0, -10)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_gt78j")
+lifetime = 0.6
+one_shot = true
+speed_scale = 2.5
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+input_pickable = false
+script = ExtResource("5_5xip8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_y3deo")
+
+[node name="DragDropArea" type="Area2D" parent="."]
+script = ExtResource("4_mbrqq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragDropArea"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_nke5q")
+debug_color = Color(0.556863, 0.529412, 0, 0.419608)

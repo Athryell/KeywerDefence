@@ -1,22 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj8gy23vbaqbc"]
+[gd_scene load_steps=4 format=3 uid="uid://ce4tl4pa3ykc5"]
 
-[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/base_weapon.tscn" id="1_pmrbr"]
-[ext_resource type="Script" path="res://Scripts/weapon_detection_area.gd" id="2_iay6u"]
-[ext_resource type="PackedScene" uid="uid://dmn2dcmrw0j1o" path="res://Scenes/Bullets/bullet_x.tscn" id="3_8ksyl"]
+[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/Weapons/base_weapon.tscn" id="1_dfawg"]
+[ext_resource type="PackedScene" uid="uid://bgi176urrop75" path="res://Components/component_weapon_closest_enemy.tscn" id="4_ybyck"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lbhsw"]
-radius = 500.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im87l"]
+size = Vector2(800, 400)
 
-[node name="Weapon_X" instance=ExtResource("1_pmrbr")]
-script = ExtResource("2_iay6u")
-bulletScene = ExtResource("3_8ksyl")
-RECHARGE_TIME = 2.0
-description = "Piercing, like shuriken"
+[node name="Weapon_X" instance=ExtResource("1_dfawg")]
+recharge_time = 2.0
 
-[node name="DetectionArea" type="Area2D" parent="." index="3"]
+[node name="ComponentWeaponClosestEnemy" parent="." index="0" instance=ExtResource("4_ybyck")]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
-shape = SubResource("CircleShape2D_lbhsw")
-one_way_collision_margin = 0.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentWeaponClosestEnemy" index="0"]
+position = Vector2(0, -200)
+shape = SubResource("RectangleShape2D_im87l")

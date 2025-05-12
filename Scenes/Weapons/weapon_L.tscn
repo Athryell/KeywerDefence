@@ -1,21 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw0w81h314juf"]
+[gd_scene load_steps=4 format=3 uid="uid://bw0w81h314juf"]
 
-[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/base_weapon.tscn" id="1_mira2"]
-[ext_resource type="Script" path="res://Scenes/Weapons/weapon_L.gd" id="2_7afi1"]
-[ext_resource type="PackedScene" uid="uid://bkb7bqufltrao" path="res://Scenes/Bullets/bullet_L.tscn" id="3_ehgdf"]
+[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/Weapons/base_weapon.tscn" id="1_x01ig"]
+[ext_resource type="PackedScene" uid="uid://bgi176urrop75" path="res://Components/component_weapon_closest_enemy.tscn" id="4_felqe"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2hc7o"]
-radius = 500.064
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqxny"]
+size = Vector2(800, 400)
 
-[node name="Weapon_L" instance=ExtResource("1_mira2")]
-script = ExtResource("2_7afi1")
-bulletScene = ExtResource("3_ehgdf")
-RECHARGE_TIME = 1.5
+[node name="Weapon_L" instance=ExtResource("1_x01ig")]
 
-[node name="DetectionArea" type="Area2D" parent="." index="2"]
-collision_layer = 0
-collision_mask = 2
+[node name="ComponentWeaponClosestEnemy" parent="." index="0" instance=ExtResource("4_felqe")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
-shape = SubResource("CircleShape2D_2hc7o")
-one_way_collision_margin = 0.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComponentWeaponClosestEnemy" index="0"]
+position = Vector2(0, -200)
+shape = SubResource("RectangleShape2D_xqxny")

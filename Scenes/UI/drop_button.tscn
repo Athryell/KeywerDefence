@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://btgw42s880vyo" path="res://Materials/MergeBtn_normal.tres" id="1_0twhl"]
 [ext_resource type="StyleBox" uid="uid://dda5mu4r5w7hc" path="res://Materials/MergeBtn_hover.tres" id="2_3wje5"]
-[ext_resource type="Script" path="res://Scenes/UI/drop_button.gd" id="3_36bs1"]
+[ext_resource type="Script" uid="uid://ghodxovesbcb" path="res://Scenes/UI/drop_button.gd" id="3_36bs1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dw6sw"]
 

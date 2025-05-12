@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdnqaodr2muhg"]
+
+[ext_resource type="Script" uid="uid://ckpmjl4wx8yra" path="res://Scripts/workshop.gd" id="1_4hpyo"]
+[ext_resource type="Texture2D" uid="uid://cjusgq33qhwbs" path="res://Sprites/Drawer.jpg" id="1_tm42b"]
+
+[sub_resource type="Animation" id="Animation_qsn7b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DropArea:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 98.87)]
+}
+
+[sub_resource type="Animation" id="Animation_namgi"]
+resource_name = "keycap_nudje_on_open_drawer"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DropArea:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 108), Vector2(0, 117.585)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nc441"]
+_data = {
+&"RESET": SubResource("Animation_qsn7b"),
+&"keycap_nudge_on_open_drawer": SubResource("Animation_namgi")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdmdu"]
+size = Vector2(794, 163.915)
+
+[node name="Workshop" type="Node2D"]
+script = ExtResource("1_4hpyo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nc441")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.57674, 1)
+texture = ExtResource("1_tm42b")
+
+[node name="DropArea" type="Area2D" parent="."]
+position = Vector2(0, 98.87)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropArea"]
+shape = SubResource("RectangleShape2D_vdmdu")

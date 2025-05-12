@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2cfi4srb5xnc"]
 
-[ext_resource type="Script" path="res://Scenes/UI/letter_alphabet.gd" id="1_lxtbo"]
+[ext_resource type="Script" uid="uid://bsabwnaojnsrs" path="res://Scenes/UI/letter_alphabet.gd" id="1_lxtbo"]
 
 [node name="letter_alphabet" type="CenterContainer"]
 custom_minimum_size = Vector2(20, 30)

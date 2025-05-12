@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgi176urrop75"]
+
+[ext_resource type="Script" uid="uid://jut6ioterix6" path="res://Scripts/Components/component_weapon_closest_enemy.gd" id="1_5poe4"]
+
+[node name="ComponentWeaponClosestEnemy" type="Area2D" groups=["Component"]]
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+script = ExtResource("1_5poe4")

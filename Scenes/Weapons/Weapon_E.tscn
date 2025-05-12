@@ -1,71 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsxd8ww1e0run"]
+[gd_scene load_steps=3 format=3 uid="uid://dsxd8ww1e0run"]
 
-[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/base_weapon.tscn" id="1_i0w8y"]
-[ext_resource type="Script" path="res://Scripts/weapon_charge.gd" id="2_dqrqt"]
-[ext_resource type="PackedScene" uid="uid://c1ohn3v5dafwb" path="res://Scenes/placeholder_area_F.tscn" id="3_mtkbe"]
-[ext_resource type="PackedScene" uid="uid://bc6fanleo40m4" path="res://Scenes/Bullets/bullet_E.tscn" id="4_q0gvb"]
-[ext_resource type="Texture2D" uid="uid://v1gmyugn2if4" path="res://Sprites/icon.svg" id="5_e36uy"]
+[ext_resource type="PackedScene" uid="uid://c7m30ggpnamjq" path="res://Scenes/Weapons/base_weapon.tscn" id="1_b70tj"]
+[ext_resource type="PackedScene" uid="uid://1jeuw5sryqxy" path="res://Components/component_weapon_charge.tscn" id="3_sgbw8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj04t"]
-size = Vector2(36, 18)
+[node name="Weapon_E" instance=ExtResource("1_b70tj")]
 
-[node name="Weapon_E" instance=ExtResource("1_i0w8y")]
-script = ExtResource("2_dqrqt")
-LOAD_SPEED = 1.7
-THROW_SPEED = 2.0
-placeholder = ExtResource("3_mtkbe")
-WALL_MAX_LENGTH = 5
-bulletScene = ExtResource("4_q0gvb")
-RECHARGE_TIME = 7.0
-description = "Solid spike wall, slow"
-
-[node name="RayCast2D" type="RayCast2D" parent="." index="3"]
-target_position = Vector2(0, -100)
-collision_mask = 2147483648
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="Line2D" type="Line2D" parent="." index="4"]
-visible = false
-points = PackedVector2Array(0, 0, 0, -10)
-width = 5.0
-default_color = Color(0.737255, 0.337255, 0.898039, 1)
-
-[node name="TargetArea" type="Area2D" parent="." index="5"]
-visible = false
-position = Vector2(0, -4)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionTargetArea" type="CollisionShape2D" parent="TargetArea" index="0"]
-position = Vector2(1, -5)
-shape = SubResource("RectangleShape2D_cj04t")
-one_way_collision_margin = 0.0
-
-[node name="TargetSprite" type="Sprite2D" parent="TargetArea" index="1"]
-position = Vector2(1, 1)
-rotation = -1.56551
-scale = Vector2(0.05, 0.272)
-texture = ExtResource("5_e36uy")
-
-[node name="TargetSprite2" type="Sprite2D" parent="TargetArea/TargetSprite" index="0"]
-position = Vector2(118.412, -55.2629)
-rotation = 1.53865
-scale = Vector2(0.164466, 2.90074)
-skew = 0.0312786
-texture = ExtResource("5_e36uy")
-
-[node name="TargetSprite3" type="Sprite2D" parent="TargetArea/TargetSprite" index="1"]
-position = Vector2(119.893, -3.79303)
-rotation = 1.53865
-scale = Vector2(0.164466, 2.90074)
-skew = 0.0312786
-texture = ExtResource("5_e36uy")
-
-[node name="TargetSprite4" type="Sprite2D" parent="TargetArea/TargetSprite" index="2"]
-position = Vector2(121.584, 55.0297)
-rotation = 1.53865
-scale = Vector2(0.164466, 2.90074)
-skew = 0.0312786
-texture = ExtResource("5_e36uy")
+[node name="ComponentWeaponCharge" parent="." index="0" instance=ExtResource("3_sgbw8")]

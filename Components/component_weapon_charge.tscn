@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://1jeuw5sryqxy"]
+
+[ext_resource type="Script" uid="uid://dh4qbtt483a4g" path="res://Scripts/Components/component_weapon_charge.gd" id="1_pl40r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytxjk"]
+size = Vector2(36, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ugqv7"]
+load_path = "res://.godot/imported/icon.svg-b67cfb692a937e61d2bda8561d9e8db7.ctex"
+
+[node name="ComponentWeaponCharge" type="Node2D" groups=["Component"]]
+script = ExtResource("1_pl40r")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -100)
+collision_mask = 2147483648
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 0, -10)
+width = 5.0
+default_color = Color(0.737255, 0.337255, 0.898039, 1)
+
+[node name="TargetArea" type="Area2D" parent="."]
+
+[node name="CollisionTargetArea" type="CollisionShape2D" parent="TargetArea"]
+position = Vector2(1, -5)
+shape = SubResource("RectangleShape2D_ytxjk")
+one_way_collision_margin = 0.0
+
+[node name="TargetSprite" type="Sprite2D" parent="TargetArea"]
+position = Vector2(1, 1)
+rotation = -1.56551
+scale = Vector2(0.05, 0.272)
+texture = SubResource("CompressedTexture2D_ugqv7")
+
+[node name="TargetSprite2" type="Sprite2D" parent="TargetArea/TargetSprite"]
+position = Vector2(118.412, -55.2629)
+rotation = 1.53865
+scale = Vector2(0.164466, 2.90074)
+skew = 0.0312786
+texture = SubResource("CompressedTexture2D_ugqv7")
+
+[node name="TargetSprite3" type="Sprite2D" parent="TargetArea/TargetSprite"]
+position = Vector2(119.893, -3.79303)
+rotation = 1.53865
+scale = Vector2(0.164466, 2.90074)
+skew = 0.0312786
+texture = SubResource("CompressedTexture2D_ugqv7")
+
+[node name="TargetSprite4" type="Sprite2D" parent="TargetArea/TargetSprite"]
+position = Vector2(121.584, 55.0297)
+rotation = 1.53865
+scale = Vector2(0.164466, 2.90074)
+skew = 0.0312786
+texture = SubResource("CompressedTexture2D_ugqv7")

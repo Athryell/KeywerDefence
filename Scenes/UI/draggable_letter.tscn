@@ -1,16 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4mqlstauxn4x"]
 
-[ext_resource type="Script" path="res://Scenes/UI/draggable_letter.gd" id="1_3lswm"]
+[ext_resource type="Script" uid="uid://c4bub7jetv5bc" path="res://Scenes/UI/draggable_letter.gd" id="1_3lswm"]
 
 [node name="Letter" type="Label"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -852.0
-offset_bottom = -348.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(150, 150)
+offset_right = 99.0
+offset_bottom = 205.0
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 150
 text = "A"
 horizontal_alignment = 1

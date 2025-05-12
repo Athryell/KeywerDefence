@@ -1,10 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://d13tjw0ck6ewe"]
+[gd_scene load_steps=4 format=3 uid="uid://d13tjw0ck6ewe"]
 
-[ext_resource type="Script" path="res://Scenes/key.gd" id="1_avlpg"]
+[ext_resource type="Script" uid="uid://c4x33h12eq7yf" path="res://Scripts/key.gd" id="1_r8vgt"]
+[ext_resource type="Texture2D" uid="uid://rnyyyaq0ukjv" path="res://Sprites/Crosshair/crosshairs_tilesheet_white.png" id="2_chgm2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrk3v"]
+size = Vector2(50, 50)
 
 [node name="Key" type="Node2D"]
-script = ExtResource("1_avlpg")
+script = ExtResource("1_r8vgt")
 
-[node name="Key_sprite" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-hframes = 3
+[node name="DropArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropArea"]
+shape = SubResource("RectangleShape2D_rrk3v")
+debug_color = Color(0.619608, 0.4, 0.901961, 0.419608)
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+texture = ExtResource("2_chgm2")
+region_enabled = true
+region_rect = Rect2(501, 436, 28, 24)
+
+[connection signal="input_event" from="DropArea" to="." method="_on_drop_area_input_event"]
+[connection signal="mouse_entered" from="DropArea" to="." method="_on_drop_area_mouse_entered"]
+[connection signal="mouse_exited" from="DropArea" to="." method="_on_drop_area_mouse_exited"]

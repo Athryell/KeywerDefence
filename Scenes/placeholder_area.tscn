@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhaxkkht11jv8"]
+
+[sub_resource type="GDScript" id="GDScript_3l1xs"]
+script/source = "extends Area2D
+
+func _on_timer_timeout():
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwtfk"]
+size = Vector2(36, 18)
+
+[node name="PlaceholderArea" type="Area2D"]
+collision_layer = 2147483648
+collision_mask = 0
+priority = 1
+script = SubResource("GDScript_3l1xs")
+
+[node name="CollisionPlaceholder" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_kwtfk")
+one_way_collision_margin = 0.0
+debug_color = Color(0.741176, 0.411765, 0.905882, 0.160784)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
